@@ -23,7 +23,7 @@ class SearchItemWidget extends StatelessWidget {
     return Container(
         constraints: BoxConstraints(
           minHeight: 0,
-          maxHeight: state.suggestionHeight,
+          maxHeight: 80,
           maxWidth: double.infinity,
           minWidth: double.infinity,
         ),
@@ -90,18 +90,14 @@ class SearchItemWidget extends StatelessWidget {
                                   },
                                   child: suggestionController.hashTagSearchCard
                                           ?.call(item) ??
-                                      ListTile(
-                                        onTap: null,
-                                        title: Text(
+                                      Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
                                           item.hashtag,
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleSmall,
                                         ),
-                                        subtitle: Text(item.subtitle ?? ''),
-                                        trailing: item.trending
-                                            ? Text('Trending')
-                                            : SizedBox(height: 0, width: 0),
                                       ));
                             },
                             itemCount: state.hashtags.length)
